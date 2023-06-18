@@ -7,7 +7,7 @@ import numpy as np
 import torch, json , cv2 , detect
 
 
-st.title("🌊 Under the sea detection")
+st.title("AI ตรวจจับคนเล่นบาสเก็ตบอล 😱")
 
 st.write("Upload your Image...")
 
