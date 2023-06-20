@@ -32,8 +32,8 @@ if uploaded_file is not None:
   detect_class = result.pandas().xyxy[0] 
   count = 0
   badcount = 0
-  for i in result:
-    print(i)
+  for i in detect_class:
+    st.write(i)
     if int(i["xmin"]) > int(w)/2:
       badcount += 1
     else:
