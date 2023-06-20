@@ -22,14 +22,21 @@ if uploaded_file is not None:
   image = cv2.imdecode(file_bytes, 1)
 
   imgRGB = cv2.cvtColor(image , cv2.COLOR_BGR2RGB)
+  h, w, c = imgRGB.shape
   #st.image(imgRGB)
-
+  
   st.write("")
   st.write("Detecting...")
   result = model(imgRGB, size=600)
-  
+      
   detect_class = result.pandas().xyxy[0] 
-  
+  count = 0
+  badcount = 0
+  for i in detect_class:
+    if i["xmin"] >= w/2:
+      badcount += 1
+    else:
+      count += 1
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
   
   #     xmin       ymin    xmax        ymax          confidence  class    name
@@ -37,7 +44,8 @@ if uploaded_file is not None:
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
   
-  
+  st.write("มีคนอยู่ในสนามวอลเลย์: "+str(count)+" คน")
+  st.write("มีคนอยู่ในสนามบาสเกตบอล: "+str(badcount)+" คน")
   
   #st.success(detect_class)
   
