@@ -34,7 +34,7 @@ if uploaded_file is not None:
   badcount = 0
   for i in detect_class:
     print(i)
-    if int(1) > int(2)/2:
+    if int(i["xmin"]) > int(w)/2:
       badcount += 1
     else:
       count += 1
